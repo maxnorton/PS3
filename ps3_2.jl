@@ -12,9 +12,9 @@ errV = [1 ρ; ρ 1];
 nostats = Regress.Params(Stats=false, IncludeConst=false);
 stats = Regress.Params(Stats=true, IncludeConst=false, VarType=:HC);
 
-#function realize(n)
+function realize(n)
     # generate data
-    n=100;
+    #n=100;
     w = rand(n,1);
     z = -.5.*(w.<.2) - .1.*(.2.<=w.<.4) + .1*(.4.<=w.<.6) + (w.>=.6);
     errorDist = MvNormal([0; 0], errV);
@@ -52,7 +52,7 @@ stats = Regress.Params(Stats=true, IncludeConst=false, VarType=:HC);
 
     b_2sls, b_fev, b_iev, ci_2sls_10[1], ci_2sls_10[2], ci_iev_10[1], ci_iev_10[2], ci_fev_10[1], ci_fev_10[2], ci_2sls_05[1], ci_2sls_05[2], ci_iev_05[1], ci_iev_05[2], ci_fev_05[1], ci_fev_05[2], ci_2sls_01[1], ci_2sls_01[2], ci_iev_01[1], ci_iev_01[2], ci_fev_01[1], ci_fev_01[2]
 
-#end
+end
 
-#b2, bf, bi, ct10l, ct10u, ci10l, ci10u, cf10l, cf10u, ct5l, ct5u, ci5l, ci5u, cf5l, cf5u, ct1l, ct1u, ci1l, ci1u, cf1l, cf1u = Simulation.run_avg(_ -> realize(100), 10000, seed = 576);
-#b24, bf4, bi4, ct10l4, ct10u4, ci10l4, ci10u4, cf10l4, cf10u4, ct5l4, ct5u4, ci5l4, ci5u4, cf5l4, cf5u4, ct1l4, ct1u4, ci1l4, ci1u4, cf1l4, cf1u4 = Simulation.run_avg(_ -> realize(400), 10000, seed = 576);
+b2, bf, bi, ct10l, ct10u, ci10l, ci10u, cf10l, cf10u, ct5l, ct5u, ci5l, ci5u, cf5l, cf5u, ct1l, ct1u, ci1l, ci1u, cf1l, cf1u = Simulation.run_avg(_ -> realize(100), 10000, seed = 576);
+b24, bf4, bi4, ct10l4, ct10u4, ci10l4, ci10u4, cf10l4, cf10u4, ct5l4, ct5u4, ci5l4, ci5u4, cf5l4, cf5u4, ct1l4, ct1u4, ci1l4, ci1u4, cf1l4, cf1u4 = Simulation.run_avg(_ -> realize(400), 10000, seed = 576);
